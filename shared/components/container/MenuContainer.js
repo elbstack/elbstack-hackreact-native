@@ -26,7 +26,7 @@ class MenuContainer extends Component {
 
     this.props.channels.forEach((channel) => {
       publicChannels.push(
-        <MenuItemContainer key={'MenuChannel' + channel.name} text={channel.name} navTarget='messaging' channel={channel} />
+        <MenuItemContainer key={'MenuChannel' + channel.name} text={channel.name} navTarget='channel' channel={channel} />
       )
     })
 

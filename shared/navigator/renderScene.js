@@ -2,6 +2,7 @@ import React, { Text, View } from 'react-native'
 
 import InitialView from '../components/pages/InitialView'
 import SettingsPage from '../components/pages/SettingsPage'
+import ChannelPage from '../components/pages/ChannelPage'
 
 export default function renderScene(route) {
   let currentView
@@ -11,6 +12,9 @@ export default function renderScene(route) {
       break
     case 'settings':
       currentView = <SettingsPage />
+      break
+    case 'channel':
+      currentView = <ChannelPage {...route.params} />
       break
     default:
       currentView = <View style={{flex: 1, backgroundColor: '#fff'}}><Text>404</Text></View>

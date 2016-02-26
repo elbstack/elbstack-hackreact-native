@@ -1,8 +1,6 @@
 import React, {
   Component,
-  View,
   PropTypes,
-  TouchableHighlight
 } from 'react-native'
 
 import { connect } from 'react-redux/native'

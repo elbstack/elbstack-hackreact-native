@@ -1,0 +1,37 @@
+fastlane_version "1.41.1"
+
+default_platform :ios
+
+require './.env.rb'
+
+platform :ios do
+  lane :build do |options|
+    cert(
+      username: ENV['apple_id'],
+      development: true
+    )
+
+    sigh(
+      username: ENV['apple_id'],
+      development: true
+    )
+
+    ENV["PROFILE_UUID"] = lane_context[SharedValues::SIGH_UDID]
+
+    gym(
+      scheme: 'Avipeo',
+      project: './ios/Avipeo.xcodeproj',
+      use_legacy_build_api: true
+    )
+  end
+
+  lane :create do
+    produce(
+      username: ENV['apple_id'],
+      app_name: 'HackReact',
+      language: 'English',
+      app_version: '1.0',
+      team_name: 'elbstack GmbH'
+    )
+  end
+end

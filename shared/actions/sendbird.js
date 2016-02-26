@@ -1,6 +1,8 @@
 import { SENDBIRD_CONNECT, SENDBIRD_CONNECT_ERROR, SENDBIRD_CONNECTED, SENDBIRD_SET_USER } from '../constants/ActionTypes'
 import { SENDBIRD_APP_ID } from '../constants/Config'
 
+import { listChannels } from './channels'
+
 import sendbird from 'sendbird'
 
 function shouldConnect(state) {
@@ -26,13 +28,16 @@ function requestConnect(id, user) {
       user_name: user,
       image_url: '',
       access_token: '',
-      successFunc: function initSuccess() {
+      successFunc: (data) => {
+        console.log(data)
+
+        dispatch(listChannels())
+
         dispatch({
           type: SENDBIRD_CONNECTED
         })
-
       },
-      errorFunc: function initError(status, error) {
+      errorFunc: (status, error) => {
         dispatch({
           type: SENDBIRD_CONNECT_ERROR,
           status: status,

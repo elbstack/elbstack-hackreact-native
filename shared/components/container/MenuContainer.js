@@ -20,12 +20,13 @@ const window = Dimensions.get('window')
 class MenuContainer extends Component {
   render() {
 
+    console.log()
+
     const publicChannels = []
 
-    let publicChannelsDummy = ['General', 'Random']
-    publicChannelsDummy.forEach((channelName) => {
+    this.props.channels.forEach((channel) => {
       publicChannels.push(
-        <MenuItemContainer key={'MenuChannel' + channelName} text={channelName} navTarget='messaging'/>
+        <MenuItemContainer key={'MenuChannel' + channel.name} text={channel.name} navTarget='messaging' channel={channel} />
       )
     })
 
@@ -105,8 +106,8 @@ if (Platform.OS === 'ios') {
 export default connect(
   (state) => {
     return {
-      login: state.login,
-      notifications: state.notifications
+      channels: state.channels.list,
+
     }
   },
   (dispatch) => {

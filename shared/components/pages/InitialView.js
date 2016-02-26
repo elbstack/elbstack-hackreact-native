@@ -20,6 +20,8 @@ import Text from '../atoms/Text'
 import LoadingIndicator from '../atoms/LoadingIndicator'
 
 import ActionBar from '../container/ActionBar'
+import SendbirdConnect from '../container/SendbirdConnect'
+
 
 import colors, { MAIN_COLOR } from '../../constants/Colors'
 import globalStyles from '../../constants/GlobalStyles'
@@ -41,6 +43,8 @@ class InitialView extends Component {
             Press Cmd+R to reload,{'\n'}
             Cmd+D or shake for dev menu
           </Text>
+
+          <SendbirdConnect />
         </View>
       </View>
     )

@@ -8,7 +8,10 @@ import {
 
 export function toggleSettings(key, newValue = false) {
   return (dispatch) => {
-    dispatch({type: SETTINGS_TOGGLE_LOADING})
+    dispatch({
+      type: SETTINGS_TOGGLE_LOADING,
+      key: key
+    })
 
     InteractionManager.runAfterInteractions(() => {
 

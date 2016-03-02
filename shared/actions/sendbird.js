@@ -1,6 +1,8 @@
 import { SENDBIRD_CONNECT, SENDBIRD_CONNECT_ERROR, SENDBIRD_CONNECTED, SENDBIRD_SET_USER } from '../constants/ActionTypes'
 import { SENDBIRD_APP_ID } from '../constants/Config'
 
+import { listChannels } from './channels'
+
 import sendbird from 'sendbird'
 
 function shouldConnect(state) {

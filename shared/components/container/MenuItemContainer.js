@@ -11,6 +11,7 @@ import MenuItem from '../atoms/MenuItem'
 class MenuItemContainer extends Component {
   static propTypes = {
     navTarget: PropTypes.string,
+    channel: PropTypes.object,
     text: PropTypes.string,
     handlePress: PropTypes.func,
     notificationCounter: PropTypes.number
@@ -29,7 +30,7 @@ class MenuItemContainer extends Component {
     if (this.props.handlePress) {
       this.props.handlePress()
     } else if (this.props.route !== this.props.navTarget) {
-      this.props.navigateTo(this.props.navTarget)
+      this.props.navigateTo(this.props.navTarget, { channel: this.props.channel })
     } else {
       this.props.closeSideMenu()
     }
@@ -42,6 +43,7 @@ class MenuItemContainer extends Component {
         selected={this.props.navTarget === this.props.route}
         handlePress={this._handlePress.bind(this)}
         notificationCounter={this.props.notificationCounter}
+        channel={this.props.chnnel}
       />
     )
   }
